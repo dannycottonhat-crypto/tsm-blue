@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="es">
+
 <head>
+
 <meta charset="utf-8">
 
 <meta
@@ -16,6 +18,10 @@
 >
 
 <style>
+
+/* =====================================================
+   GENERAL
+===================================================== */
 
 html{
   scroll-behavior:smooth;
@@ -36,12 +42,16 @@ body{
   box-sizing:border-box;
 }
 
-.serif{
-  font-family:Georgia,"Times New Roman",serif;
+img{
+  max-width:100%;
 }
 
 a{
   text-decoration:none;
+}
+
+.serif{
+  font-family:Georgia,"Times New Roman",serif;
 }
 
 
@@ -52,6 +62,7 @@ a{
 .hero{
   background:#071F63;
   width:100%;
+  overflow:hidden;
 }
 
 .hero-inner{
@@ -69,7 +80,6 @@ a{
   font-weight:bold;
   color:#D4AF37;
   letter-spacing:2px;
-  word-break:normal;
 }
 
 .logo-sub{
@@ -91,28 +101,40 @@ a{
 }
 
 
-/* TITULAR RESPONSIVE */
+/* =====================================================
+   TITULAR
+===================================================== */
 
 .hero-title{
   font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(48px,15vw,96px);
+
+  /*
+    Tamaño responsive para que HALLOWEEN
+    siempre entre en pantallas pequeñas.
+  */
+  font-size:clamp(42px,13vw,96px);
+
   line-height:.9;
   margin:22px 0 0;
   font-weight:bold;
   color:#fff;
 
-  /* Evita que HALLOWEEN provoque overflow */
   width:100%;
   max-width:100%;
+
+  overflow:hidden;
   overflow-wrap:normal;
   word-break:normal;
+
   white-space:normal;
+
+  letter-spacing:-1px;
 }
 
 .hero-title span{
   display:block;
   color:#D4AF37;
-  margin-top:10px;
+  margin-top:12px;
 }
 
 .date{
@@ -215,7 +237,7 @@ a{
 
 
 /* =====================================================
-   INFANTIL
+   MENU INFANTIL
 ===================================================== */
 
 .children-section{
@@ -309,24 +331,52 @@ a{
 }
 
 
-/* BOTÓN LLAMAR */
+/* =====================================================
+   BOTONES
+===================================================== */
 
-.call-button{
+.call-button,
+.email-button{
   display:block;
   width:100%;
   max-width:390px;
-  margin:30px auto 0;
-  background:#071F63;
-  color:#fff;
+  margin-left:auto;
+  margin-right:auto;
+
   padding:18px 20px;
+
   border-radius:40px;
+
   font-weight:bold;
   font-size:17px;
   text-align:center;
+
+  transition:opacity .2s ease, transform .2s ease;
+}
+
+.call-button{
+  margin-top:30px;
+  background:#071F63;
+  color:#fff;
+}
+
+.email-button{
+  margin-top:12px;
+  background:#fff;
+  color:#071F63;
+  border:2px solid #071F63;
+}
+
+.call-button:hover,
+.email-button:hover{
+  opacity:.9;
+  transform:translateY(-1px);
 }
 
 
-/* NÚMERO */
+/* =====================================================
+   TELEFONO
+===================================================== */
 
 .phone{
   font-size:clamp(19px,5vw,22px);
@@ -422,18 +472,30 @@ footer{
     padding:38px 14px 48px;
   }
 
-  .destination{
-    margin-top:38px;
+  .logo{
+    font-size:48px;
   }
 
+  .logo-sub{
+    font-size:10px;
+    letter-spacing:3px;
+  }
+
+  .destination{
+    margin-top:38px;
+    font-size:11px;
+    line-height:1.5;
+  }
+
+  /*
+    Ajuste importante:
+    HALLOWEEN debe entrar entero en móvil.
+  */
+
   .hero-title{
-    /*
-      Importante:
-      en móvil el tamaño baja automáticamente
-      para que HALLOWEEN entre completo.
-    */
-    font-size:clamp(43px,14.2vw,68px);
-    letter-spacing:-1px;
+    font-size:clamp(40px,13vw,58px);
+    letter-spacing:-1.5px;
+    line-height:.92;
   }
 
   .hero-title span{
@@ -442,6 +504,7 @@ footer{
 
   .date{
     margin-top:22px;
+    font-size:20px;
   }
 
   .gold-line{
@@ -458,6 +521,10 @@ footer{
 
   .price-box{
     padding:24px 12px;
+  }
+
+  .price{
+    font-size:56px;
   }
 
   .menu-section{
@@ -480,7 +547,8 @@ footer{
     padding:48px 18px;
   }
 
-  .call-button{
+  .call-button,
+  .email-button{
     padding:17px 14px;
     font-size:16px;
   }
@@ -494,12 +562,27 @@ footer{
 
 @media(max-width:360px){
 
-  .hero-title{
-    font-size:clamp(39px,13.8vw,54px);
+  .hero-inner{
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  .logo{
+    font-size:44px;
   }
 
   .destination{
     letter-spacing:1.5px;
+  }
+
+  .hero-title{
+    /*
+      En pantallas muy pequeñas
+      bajamos todavía más el tamaño
+      para evitar cualquier corte.
+    */
+    font-size:clamp(37px,12.5vw,50px);
+    letter-spacing:-1.5px;
   }
 
   .hero-subtitle{
@@ -510,9 +593,40 @@ footer{
     font-size:50px;
   }
 
+  .menu-title{
+    font-size:32px;
+  }
+
+}
+
+
+/* =====================================================
+   PANTALLAS GRANDES
+===================================================== */
+
+@media(min-width:768px){
+
+  .hero-title{
+    font-size:80px;
+  }
+
+}
+
+
+/* =====================================================
+   PANTALLAS MUY GRANDES
+===================================================== */
+
+@media(min-width:1100px){
+
+  .hero-title{
+    font-size:96px;
+  }
+
 }
 
 </style>
+
 </head>
 
 
@@ -752,7 +866,7 @@ footer{
 
 
 <!-- =====================================================
-     CTA
+     CTA PRINCIPAL
 ===================================================== -->
 
 <section class="cta">
@@ -773,13 +887,27 @@ footer{
   </p>
 
 
-  <!-- LLAMADA DIRECTA AL HOTEL -->
+  <!-- =================================================
+       LLAMAR PARA RESERVAR
+  ================================================== -->
 
   <a
     href="tel:+34981637205"
     class="call-button"
   >
     📞 LLAMAR PARA RESERVAR
+  </a>
+
+
+  <!-- =================================================
+       RESERVAR POR EMAIL
+  ================================================== -->
+
+  <a
+    href="mailto:comercial7@farandahotels.com?subject=Reserva%20Halloween%202026%20-%20Faranda%20R%C3%ADas%20Altas&body=Hola%2C%0A%0AQuiero%20reservar%20para%20la%20cena%20de%20Halloween%202026%20en%20el%20Hotel%20Faranda%20R%C3%ADas%20Altas.%0A%0AN%C3%BAmero%20de%20adultos%3A%0AN%C3%BAmero%20de%20ni%C3%B1os%3A%0ANombre%3A%0ATel%C3%A9fono%20de%20contacto%3A%0A%0AGracias."
+    class="email-button"
+  >
+    ✉️ RESERVAR POR EMAIL
   </a>
 
 
@@ -852,4 +980,5 @@ footer{
 
 
 </body>
+
 </html>
